@@ -84,6 +84,10 @@ module RspecApiDocumentation
         examples.each do |example|
           specs.paths.add_setting example.route, :value => OpenApi::Path.new
 
+          if example.respond_to?(:route_x_summary) && example.route_x_summary.present?
+            specs.paths.setting(example.route).assign_setting("x-summary", example.route_x_summary)
+          end
+
           operation = specs.paths.setting(example.route).setting(example.http_method) || OpenApi::Operation.new
 
           operation.safe_assign_setting(:tags, [example.resource_name])

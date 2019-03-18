@@ -85,6 +85,10 @@ module RspecApiDocumentation::DSL
         safe_metadata(:route_summary, text)
       end
 
+      def route_x_summary(text)
+        safe_metadata(:route_x_summary, text)
+      end
+
       def route_description(text)
         safe_metadata(:route_description, text)
       end
